@@ -1,3 +1,4 @@
-vpc:
-source:  "https://github.com/priyankapeelu/tf-module-vpc.git?ref=main"
-version: "main"
+module "vpc" {
+  source = "./vendor/modules/vpc"
+  PC_CIDR = var.VPC_CIDR
+}
