@@ -9,3 +9,12 @@ module "vpc" {
   DEFAULT_VPC_CIDR    = var.DEFAULT_VPC_CIDR
   DEFAULT_VPC_RT      = var.DEFAULT_VPC_RT
 }
+
+module "redis" {
+  source                     = "./vendor/modules/redis"
+  ENV                        = var.ENV
+  ELASTICACHE_NODE_TYPE      = var.ELASTICACHE_NODE_TYPE
+  ELASTICACHE_NODE_COUNT     = var.ELASTICACHE_NODE_COUNT
+  ELASTICACHE_PORT           = var.ELASTICACHE_PORT
+  ELASTICACHE_ENGINE_VERSION = var.ELASTICACHE_ENGINE_VERSION
+}
