@@ -1,12 +1,13 @@
-variable "VPC_CIDR" {}
-variable "ENV" {}
-variable "PUBLIC_SUBNET_CIDR" {}
-variable "PRIVATE_SUBNET_CIDR" {}
-variable "AZ" {}
-variable "DEFAULT_VPC_ID" {}
-variable "DEFAULT_VPC_CIDR" {}
-variable "DEFAULT_VPC_RT" {}
-variable "HOSTEDZONE_PRIVATE_ID" {}
-variable "HOSTEDZONE_PRIVATE_ZONE" {}
-variable "HOSTEDZONE_PUBLIC_ID" {}
-variable "HOSTEDZONE_PUBLIC_ZONE" {}
+module "alb-public" {
+  source   = "./vendor/modules/alb"
+  ALB_NAME = "roboshop-public"
+  INTERNAL = false
+  ENV      = var.ENV
+}
+
+module "alb-private" {
+  source   = "./vendor/modules/alb"
+  ALB_NAME = "roboshop-private"
+  INTERNAL = true
+  ENV      = var.ENV
+}
